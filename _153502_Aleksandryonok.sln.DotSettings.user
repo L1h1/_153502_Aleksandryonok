@@ -1,7 +1,8 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=2b4eb193_002Ddab0_002D4c5f_002D9b97_002Dfb1493117d1b/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="All tests from UnitTest1.cs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
   &lt;Or&gt;&#xD;
-    &lt;ProjectFile&gt;755CED49-BE96-43FF-9D01-3C5674A08461/f:UnitTest1.cs&lt;/ProjectFile&gt;&#xD;
-    &lt;ProjectFile&gt;8E1B384B-5843-4905-898B-79E60D3EA694/f:UnitTest1.cs&lt;/ProjectFile&gt;&#xD;
+    &lt;Project Location="C:\Users\Ialek\RiderProjects\_153502_Aleksandryonok\Test1" Presentation="&amp;lt;Test1&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="C:\Users\Ialek\RiderProjects\_153502_Aleksandryonok\Test2" Presentation="&amp;lt;Test2&amp;gt;" /&gt;&#xD;
+    &lt;Project Location="C:\Users\Ialek\RiderProjects\_153502_Aleksandryonok\Test3" Presentation="&amp;lt;Test3&amp;gt;" /&gt;&#xD;
   &lt;/Or&gt;&#xD;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

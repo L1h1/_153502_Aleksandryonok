@@ -1,39 +1,12 @@
 ﻿// вар 2
 
 
-while (true)
-{
-    Console.WriteLine("enter integer number");
-int a = Convert.ToInt32(Console.ReadLine());
+using Task1;
 
-if(Calc.IsOdd(a))
-    Console.WriteLine("is odd");
-else
-    Console.WriteLine("is even");
-
-
-Console.WriteLine("1 - repeat\n2 - end");
-int b = Convert.ToInt32(Console.ReadLine());
-switch (b)
-{
-    case 1:
-        break;
-    case 2:
-        return;
-    default:
-        Console.WriteLine("wrong input, finishing the work");
-        return;
-}
-}
-
-
-public class Calc
-{
-    public static bool IsOdd(int value)
-    {
-        if (value%2==1)
-            return true;
-        else
-            return false;
-    }
-}
+Console.WriteLine("enter 2 integers \n");
+int x, y;
+x = Convert.ToInt32(Console.ReadLine());
+y = Convert.ToInt32(Console.ReadLine());
+int result = Calculator.max(x, 2 * y + x) - Calculator.max(7 * x + 2 * y, y);
+Console.WriteLine($"{result}");
+    
