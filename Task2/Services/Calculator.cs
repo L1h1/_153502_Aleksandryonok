@@ -4,7 +4,7 @@ public class Calculator
 {
     public static double ProcessFunction(int a, int b, int z)
     {
-        double x,result;
+        double x;
         if (z < a * b)
         {
             x = Math.Sqrt(a * a + b * b * z);
@@ -16,7 +16,7 @@ public class Calculator
             Console.WriteLine("...calculating 2nd branch...");
         }
 
-        result = (a * x + b * x * Math.Cos(Math.Sqrt(x))) / (x + a * b);
-        return result;  
+      
+        return (a * x + b * x * Math.Cos(Math.Sqrt(x))) / (x + a * b);  
     }
 }
