@@ -2,7 +2,7 @@
 
 public class Calculator
 {
-    public static int max(int a, int b)
+    public static int Max(int a, int b)
     {
         return a > b ? a : b;
     }

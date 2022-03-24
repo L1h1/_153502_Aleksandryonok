@@ -13,21 +13,21 @@ public class Tests
     [Test]
     public void EqualXandY()
     {
-        Assert.AreEqual(Calculator.max(1, 1), 1);
+        Assert.AreEqual(Calculator.Max(1, 1), 1);
     }
     [Test]
     public void XbiggerThanY()
     {
-        Assert.AreEqual(Calculator.max(534, 1), 534);
+        Assert.AreEqual(Calculator.Max(534, 1), 534);
     }
     [Test]
     public void XlesserThanY()
     {
-        Assert.AreEqual(Calculator.max(1, 534), 534);
+        Assert.AreEqual(Calculator.Max(1, 534), 534);
     }
     [Test]
     public void OutputComparison()
     {
-        Assert.AreEqual(Calculator.max(354, 1), Calculator.max(1,354));
+        Assert.AreEqual(Calculator.Max(354, 1), Calculator.Max(1,354));
     }
 }

@@ -4,7 +4,7 @@ using Task3;
 Console.WriteLine("Enter date in format dd mm yyyy");
 
 string? str=Console.ReadLine();
-DateTime d = DateService.GetDay(str);
+DateTime d = DateService.GetDay(str!);
 Console.WriteLine($"{d.Day} {d.Month} {d.DayOfWeek} {d.Year}");
 
 Console.WriteLine("Enter day month year in integer format");
