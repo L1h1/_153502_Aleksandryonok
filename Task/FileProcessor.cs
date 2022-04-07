@@ -34,8 +34,7 @@ public class FileProcessor
     public string GetContent()
     {
         if (_content != null)
-            return _content;
-        else return "NO_DATA_";
+            return _content; return "NO_DATA_";
     }
 
     public void WriteFile(string str)

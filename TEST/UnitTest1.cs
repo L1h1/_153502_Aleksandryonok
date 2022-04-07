@@ -76,4 +76,23 @@ public class Tests
         s.StationDecreasePrice(20000);
         Assert.AreEqual(s.StationGetPrice(),10000);
     }
+    [Test]
+    public void TestStringToStation()
+    {
+        Station s = Station.GetInstance();
+        s.StringToStation("EEEE\n12\n200\n100");
+        Assert.AreEqual(s.StationGetPrice(),12);
+        Assert.AreEqual(s.StationGetPlace(),200);
+        Assert.AreEqual(s.StationGetUnsold(),1200);
+    }
+    [Test]
+    public void TestStationToString()
+    {
+        Station s = Station.GetInstance();
+        s.StringToStation("EEEE\n12\n200\n100");
+        string str = s.StationGetString();
+        Assert.AreEqual(str,"EEEE\n12\n200\n100");
+    }
+
+    
 }

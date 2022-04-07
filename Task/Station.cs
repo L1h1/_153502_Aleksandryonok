@@ -132,10 +132,6 @@ public class Station
     {
         return _stationTicket.GetUnsold();
     }
-    public void InitData(double price, int places, int soldCount)
-    {
-        _stationTicket = new Ticket(price, places, soldCount);
-    }
 
     public string StationGetData()
     {
@@ -150,5 +146,17 @@ public class Station
     public int StationGetPlace()
     {
         return _stationTicket.GetPlace();
+    }
+
+    public string StationGetString()
+    {
+        return _name+"\n" + _stationTicket.getData();
+    }
+
+    public void StringToStation(string str)
+    {
+        string[] data= str.Split("\n");
+        _name = data[0];
+        _stationTicket = new Ticket(double.Parse(data[1]), int.Parse(data[2]), int.Parse(data[3]));
     }
 }
