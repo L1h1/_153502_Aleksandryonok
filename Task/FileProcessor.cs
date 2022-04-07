@@ -2,34 +2,50 @@
 
 public class FileProcessor
 {
-    private static FileProcessor instance=null;
-    private static FileStream file;
-    private static string content="NO_DATA_";
+    private static FileProcessor? _instance;
+    private static FileStream? _file;
+    private static string? _content;
+    private static string? _path;
     private FileProcessor()
     {
-        
     }
-
     public static FileProcessor GetInstance()
     {
-        if (instance == null)
-            instance = new FileProcessor();
-        return instance;
+        if (_instance == null)
+            _instance = new FileProcessor();
+        return _instance;
     }
-
-    
-    public void ReadFile(string path)
+    public void ReadFile()
     {
-        file = new FileStream(path, FileMode.Open, FileAccess.Read);
-        content = "";
-        StreamReader reader = new StreamReader(file);
-        content = reader.ReadToEnd();
+        if (_path == null)
+            return;
+        _file = new FileStream(_path, FileMode.Open, FileAccess.Read);
+        _content = "";
+        StreamReader reader = new StreamReader(_file);
+        _content = reader.ReadToEnd();
         reader.Close();
-        file.Close();
+        _file.Close();
     }
 
+    public void SetPath(string path)
+    {
+        _path = path;
+    }
     public string GetContent()
     {
-        return content;
+        if (_content != null)
+            return _content;
+        else return "NO_DATA_";
+    }
+
+    public void WriteFile(string str)
+    {
+        if (_path == null)
+            return;
+        _content = "";
+        StreamWriter reader = new StreamWriter(_path,false);
+        reader.WriteAsync(str);
+        reader.Close();
+        
     }
 }
