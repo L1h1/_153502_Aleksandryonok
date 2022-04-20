@@ -11,88 +11,67 @@ public class Tests
     }
 
     [Test]
-    public void TestName()
+    public void ClientTestSummary()
     {
-        Station s = Station.GetInstance();
-        s.SetName("TEST");
-        Assert.AreEqual(s.GetName(),"TEST");
+        Client cl = new Client("a", "b", "c");
+        cl.ApplyTransaction(new Ticket(100,Station.Rate.First));
+        cl.ApplyTransaction(new Ticket(45,Station.Rate.Second));
+        cl.ApplyTransaction(new Ticket(37.1,Station.Rate.Third));
+        Assert.AreEqual(cl.GetTransactionSummary(),182.1,0.000001);
     }
     [Test]
-    public void TestPriceIncrease1()
+    public void ClientTestOnRate()
     {
-        Station s = Station.GetInstance();
-        s.StationSetPrice(10);
-        s.StationSetSold(10);
-        s.StationSetPlace(30);
-        Assert.AreEqual(s.StationGetUnsold(),200);
+        Client cl = new Client("a", "b", "c");
+        cl.ApplyTransaction(new Ticket(100,Station.Rate.First));
+        cl.ApplyTransaction(new Ticket(45,Station.Rate.Second));
+        Assert.False(cl.IsOnRate(Station.Rate.Third));
+        Assert.True(cl.IsOnRate(Station.Rate.First));
+        Assert.True(cl.IsOnRate(Station.Rate.Second));
     }
     [Test]
-    public void TestPriceIncrease2()
+    public void ClientTestData()
     {
-        Station s = Station.GetInstance();
-        s.StationSetPrice(10);
-        s.StationIncreasePrice(); //+10
-        s.StationSetSold(10);
-        s.StationSetPlace(30);
-        Assert.AreEqual(s.StationGetUnsold(),400);
+        Client cl = new Client("a", "b", "c");
+        Assert.AreEqual(cl.GetClientData(),"a\tb\tc");
     }
     [Test]
-    public void TestPriceIncrease3()
+    public void TicketTestData()
     {
-        Station s = Station.GetInstance();
-        s.StationSetPrice(10);
-        s.StationIncreasePrice(1); 
-        s.StationSetSold(10);
-        s.StationSetPlace(30);
-        Assert.AreEqual(s.StationGetUnsold(),220);
+        Ticket ticket = new Ticket(273.324,Station.Rate.Second);
+        Assert.AreEqual(ticket.GetData(),"273,324 Second");
     }
     [Test]
-    public void TestSetPrice()
+    public void StationListings()
     {
-        Station s = Station.GetInstance();
-        s.StationSetPrice(54678);
-        Assert.AreEqual(s.StationGetPrice(),54678);
+        Station saratov = new Station("Saratov",10.5,90.5,99.9);
+        saratov.RegisterClient("John","Wick","sbkwegiu4rt4w83");
+        saratov.RegisterClient("Victor","Heim","es565453wtgxw43");
+        saratov.RegisterClient("David","King","zwekii342i2rk2g");
+        saratov.RegisterClient("William","Owerbek","vcxmnn3gjmjkw21");
+        saratov.SetActiveClient(0);
+        saratov.ProcessTransaction(Station.Rate.First);
+        saratov.ProcessTransaction(Station.Rate.Third);
+        saratov.SetActiveClient(1);
+        saratov.ProcessTransaction(Station.Rate.First);
+        saratov.ProcessTransaction(Station.Rate.Second);
+        saratov.SetActiveClient(2);
+        saratov.ProcessTransaction(Station.Rate.Second);
+        saratov.ProcessTransaction(Station.Rate.Third);
+        saratov.SetActiveClient(3);
+        saratov.ProcessTransaction(Station.Rate.First);
+        saratov.ProcessTransaction(Station.Rate.Second);
+        saratov.ProcessTransaction(Station.Rate.Third);
+        Assert.AreEqual(saratov.ShowClients(),"###################################Client_List###################################\n" +
+                                              "[0] John\tWick\tsbkwegiu4rt4w83\n" +
+                                              "[1] Victor\tHeim\tes565453wtgxw43\n" +
+                                              "[2] David\tKing\tzwekii342i2rk2g\n" +
+                                              "[3] William\tOwerbek\tvcxmnn3gjmjkw21\n" +
+                                              "#################################################################################");
+        Assert.AreEqual(saratov.ShowRateTransactions(Station.Rate.First),"#################################First########################################\n" +
+                                                                          "[0] John\tWick\tsbkwegiu4rt4w83\n" +
+                                                                          "[1] Victor\tHeim\tes565453wtgxw43\n" +
+                                                                          "[3] William\tOwerbek\tvcxmnn3gjmjkw21\n" +
+                                                                          "#################################################################################");
     }
-    [Test]
-    public void TestSetPlace()
-    {
-        Station s = Station.GetInstance();
-        s.StationSetPlace(54678);
-        Assert.AreEqual(s.StationGetPlace(),54678);
-    }
-    [Test]
-    public void TestDecreasePrice()
-    {
-        Station s = Station.GetInstance();
-        s.StationSetPrice(54678);
-        s.StationDecreasePrice(10000);
-        Assert.AreEqual(s.StationGetPrice(),44678);
-    }
-    [Test]
-    public void TestDecreaseInNegative()
-    {
-        Station s = Station.GetInstance();
-        s.StationSetPrice(10000);
-        s.StationDecreasePrice(20000);
-        Assert.AreEqual(s.StationGetPrice(),10000);
-    }
-    [Test]
-    public void TestStringToStation()
-    {
-        Station s = Station.GetInstance();
-        s.StringToStation("EEEE\n12\n200\n100");
-        Assert.AreEqual(s.StationGetPrice(),12);
-        Assert.AreEqual(s.StationGetPlace(),200);
-        Assert.AreEqual(s.StationGetUnsold(),1200);
-    }
-    [Test]
-    public void TestStationToString()
-    {
-        Station s = Station.GetInstance();
-        s.StringToStation("EEEE\n12\n200\n100");
-        string str = s.StationGetString();
-        Assert.AreEqual(str,"EEEE\n12\n200\n100");
-    }
-
-    
 }
