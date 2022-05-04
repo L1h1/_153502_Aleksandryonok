@@ -1,3 +1,4 @@
+using System;
 using NUnit.Framework;
 using Task;
 
@@ -11,30 +12,61 @@ public class Tests
     }
 
     [Test]
-    public void printNameNoOverload()
+    public void OperatorPlus()
     {
-        School sc = new School("abauba", 15, 15);
-        Assert.AreEqual(sc.PrintName(),"учреждение образования abauba");
+        Rational r1 = new Rational(12,24); 
+        Rational r2 = new Rational(12,24);
+        Assert.True(new Rational(576,576)== (r1 + r2));
     }
     [Test]
-    public void printNameOverload()
+    public void OperatorMinus()
     {
-        University sc = new University("abauba", 15);
-        Assert.AreEqual(sc.PrintName(),"Добро пожаловать в университет abauba!");
+        Rational r1 = new Rational(12,24); 
+        Rational r2 = new Rational(11,24);
+        Assert.True(new Rational(24,576)== (r1 -r2));
     }
     [Test]
-    public void Dynamics()
+    public void OperatorIncrement()
     {
-        University sc = new University("abauba", 15);
-        sc.FailCount = 100;
-        Assert.AreEqual(sc.GetFailDynamic(),85);
+        Rational r1 = new Rational(12,24);
+        r1++;
+        Console.WriteLine(r1.toString());
+        Assert.True(r1==new Rational(13,25));
     }
     [Test]
-    public void PrintInf()
+    public void OperatorDecrement()
     {
-        University sc = new University("abauba", 15);
-        sc.FailCount = 100;
-        Assert.AreEqual(sc.PrintInfo(),"число несдавших лабы: 100");
+        Rational r1 = new Rational(13,24);
+        r1--;
+        Console.WriteLine(r1.toString());
+        Assert.True(r1==new Rational(12,23));
+    }
+    [Test]
+    public void OperatorMultiply()
+    {
+        Rational r1 = new Rational(12,24); 
+        Rational r2 = new Rational(12,24);
+        Assert.True(new Rational(144,576)== (r1 * r2));
+    }
+    [Test]
+    public void OperatorDivide()
+    {
+        Rational r1 = new Rational(12,24); 
+        Rational r2 = new Rational(12,24);
+        Assert.True(new Rational(288,288)== (r1 / r2));
+    }
+
+    [Test]
+    public void Conversion()
+    {
+        Rational r1 = new Rational(51,24); 
+        Assert.AreEqual((int)r1,2);
+    }
+    [Test]
+    public void Gcd()
+    {
+        Rational r1 = new Rational(625,25); 
+        Assert.AreEqual(r1.GetGcd(),25);
     }
     
 }
